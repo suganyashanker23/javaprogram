@@ -1,0 +1,70 @@
+import java.util.*;
+public class dec12 {
+   static ArrayList<ArrayList> al=new ArrayList<ArrayList>();
+   static Scanner sc=new Scanner(System.in);
+  public static void main(String[] args) {
+    int option=0;
+    while(option<=5){
+ System.out.println("Enter the option to perform operation in arraylist");
+ System.out.println("1. To add data");
+ System.out.println("2. To update data");
+ System.out.println("3. To get data");
+ System.out.println("4. To delete data");
+ System.out.println("5. To view list");
+ System.out.println("6. To exit");
+ option=sc.nextInt();
+ switch(option){
+   case 1:add();break;
+   case 2:update();break;
+   case 3:get();break;
+   case 4:delete();break;
+   case 5:display();
+   case 6:break;
+   }}}
+public static void display(){
+    System.out.println(al);
+  }
+public static void add(){
+  System.out.println("Enter the employee details:");
+  String name = sc.next();
+       ArrayList list= new ArrayList();
+  list.add(name);
+  System.out.println("Emp.no");
+  int empno=sc.nextInt();
+  list.add(empno);
+    System.out.println("email address");
+  String emailaddress=sc.next();
+  list.add(emailaddress);
+  al.add(list);
+  System.out.println(list);
+  display();
+}
+public static void get(){
+  System.out.println("Enter the name to get details");
+  String name=sc.next();
+  for(int i=0;i<al.size();i++){
+  if(al.get(i).get(0).equals(name)){
+  System.out.println(al.get(i));}
+}}
+public static void delete(){
+  System.out.println("Enter the name to remove it from list");
+  String name =sc.next();
+  for(int i=0;i<al.size();i++){
+  if(al.get(i).get(0).equals(name)){
+  al.remove(i);}
+}}
+public static void update(){
+   ArrayList list= new ArrayList();
+  System.out.println("Enter the name to update in the list");
+  String name=sc.next();
+  for(int i=0;i<al.size();i++){
+  if(al.get(i).get(0).equals(name)){
+  System.out.println("Enter the name");
+  list.add(sc.next());
+  System.out.println("Enter the Emp.No");
+  list.add(sc.nextInt());
+  System.out.println("Enter the email address");
+  list.add(sc.next());
+  al.set(i,list);
+    }}}}
+ 
