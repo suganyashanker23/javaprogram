@@ -1,0 +1,28 @@
+import java.util.*;
+public class HelloWorld{
+ public static void main(String []args){
+        System.out.println("Tree Map operations");
+        TreeMap<Integer,String> tm=new TreeMap<Integer,String>();
+        tm.put(10,"sugu");
+        tm.put(50,"ram");
+        tm.put(3,"nan");
+        tm.put(45,"balu");
+        tm.put(12,"priya");
+        tm.put(8,"selvi");
+        tm.put(28,"ramu");
+         System.out.println("Displaying the name with ascending order of age "+tm);
+         Set<Integer> key=tm.keySet();
+         tm.put(16,"viji");
+         tm.put(20,"tom");
+         tm.put(80,"rose");
+         tm.put(90,"jack");
+         tm.remove(28);
+         System.out.println("New list");
+          for(Map.Entry<Integer,String> entry:tm.entrySet()){
+          System.out.println(entry.getKey()+" "+ entry.getValue());
+         }
+    System.out.println("The child names and their age in the tree map "+tm.headMap(12)); // headmap for child
+    System.out.println("The adul names and their age in the tree map "+tm.subMap(12,21));           //submap for aduls      
+    System.out.println("The list of old people in the tree map "+tm.tailMap(80));
+    //tail map for old people
+     }}
