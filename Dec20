@@ -1,0 +1,28 @@
+import java.util.*;
+public class HelloWorld{
+ public static void main(String []args){
+     System.out.println("Transpose matrix program");
+     System.out.println("Original matrix");
+int a[][]={{1,2,3},{4,5,6},{7,8,9}};
+for(int arr[]:a)
+System.out.println(Arrays.toString(arr));
+System.out.println("Transpose matrix");
+int b[][]=new int[a.length][a[0].length];
+for(int i=0;i<a.length;i++){
+    for(int j=0;j<a[0].length;j++){
+      b[i][j]=a[j][i];
+      System.out.print(b[i][j]+" ");
+    }
+    System.out.println("");
+}
+System.out.println("                *****************");
+System.out.println("Pentagonal numbers");
+     int startnum=1;
+     int addnum=startnum;
+     int count=10;
+     int pentagonalnum=0;
+     for(int i=0;i<count;i++){
+         pentagonalnum=pentagonalnum+addnum;
+         addnum=addnum+3;
+         System.out.println(pentagonalnum);
+              }}}
