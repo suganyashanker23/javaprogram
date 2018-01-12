@@ -1,0 +1,71 @@
+package sample;
+import java.util.*;
+//Hotels will shown based on requirement rating and budget
+public class Jan9 {
+   static HashMap<String,ArrayList<Integer>> hmap=new HashMap<String,ArrayList<Integer>>();
+		     public static void main(String []args){
+		    	 addhoteldata("Park Hyatt",100,150,3,3,10);
+		    	 addhoteldata("The Iris Hotel",250,300,5,10,20);
+		    	 addhoteldata("Turyaa Chennai",150,250,4,5,10);
+		    	 addhoteldata("velacity",200,250,3,3,10);
+		    	 addhoteldata("Taj Club House",200,300,4,3,20);
+//		    	 addhoteldata("Taj Club House",200,300,4,3,20);
+//		    	 addhoteldata("Taj Club House",200,300,4,3,20);
+//System.out.println("Hotel list");
+//for(Map.Entry<String,ArrayList<Integer>> entry : hmap.entrySet()) {
+//	System.out.println(entry.getKey()+" "+entry.getValue());
+//}
+		    	boolean status=true;
+		    	 do{
+	         System.out.println("Find your best hotel!!!!");
+	         Scanner sc=new Scanner(System.in);
+	        System.out.println("Enter your budget amount");
+	        int expamt =sc.nextInt();
+	        System.out.println("No of days");
+	        int day=sc.nextInt();
+	        System.out.println("No of nights");
+	        int night=sc.nextInt();
+	        System.out.println("Enter the rating between 1 to 5");
+	        int rating=sc.nextInt();
+	        besthotel(expamt,day,night,rating);
+	        System.out.println("1.stop");
+	        System.out.println("2.next");
+	        int choice =sc.nextInt();
+	        if(choice==1) {
+	        status=false;
+	        }
+	         }while(status);
+	         }
+	     public static void besthotel(int expamt, int days,int nights, int rating){
+     for(Map.Entry<String,ArrayList<Integer>> entry : hmap.entrySet())  
+     {
+    	 double amt=0;
+    	  String hotelname=entry.getKey();
+    	    int dayamt=entry.getValue().get(0);
+    	    int nightamt=entry.getValue().get(1);
+    	   amt=(days*dayamt)+(nights*nightamt);
+    	   int discountdaylimit=entry.getValue().get(3);
+   	       int dn=days+nights;
+   	    double disamt=amt*((double)entry.getValue().get(4)/100);
+	if(dn>=discountdaylimit) {
+		amt=amt-disamt;
+	     }
+	if(amt<=expamt && rating==entry.getValue().get(2)) {
+		 System.out.println("Hotelname : "+hotelname);
+	    	System.out.println("Rating : "+rating);
+	    	System.out.println("Discount : "+ disamt);
+    	 System.out.println("Final amount : "+amt);
+    	 System.out.println("      **************");
+	}
+     }}
+	     public static void addhoteldata(String hotelname,int dayamt,int nightamt,int rating,int discount,int discountpercent) {
+	    	ArrayList<Integer> list=new ArrayList<Integer>();
+	    	 list.add(dayamt);
+	    	 list.add(nightamt);
+	    	 list.add(rating);
+	    	 list.add(discount);
+	    	 list.add(discountpercent);
+	    	 hmap.put(hotelname,list);
+	    	 
+	     }
+	}
