@@ -1,0 +1,35 @@
+public class Jan24{
+
+     public static void main(String []args){
+        System.out.println("The year is leap year or not");
+        leap(1995);
+        leap(1800);
+        leap(1804);
+        leap(2000);
+        leap(1600);
+        leap(1860);
+        leap(2012);
+        leap(1860);
+        leap(1900);
+}
+     public static void leap(int year){
+         boolean flag=false;
+                 if(year%400==0){
+                     flag=true;
+                      }
+                      else if (year%100==0){
+                          flag =false;
+
+                      }
+                 else if(year%4==0){
+                     flag=true;
+                 }
+                 else{
+                     flag=false;
+                 }
+                 if(flag){
+                     System.out.println(year+" is leap year" );
+                 }
+else{
+    System.out.println(year+" is not a leap year");
+}}}
