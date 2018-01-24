@@ -1,0 +1,22 @@
+package logicalprograms;
+import java.util.*;
+public class Jan24 {
+	
+	    public static void main(String []args){
+	    System.out.println("First recurring character in the the given String");
+	        String str="ABCDBA";
+	        System.out.println("String - "+str);
+	        int count=0;
+	        HashSet hs=new HashSet();
+	        for(int i=0;i<str.length();i++){
+	            if(hs.contains(str.charAt(i))){
+	                System.out.println("First recurring character in the given string is "+str.charAt(i));
+	                count++;
+	                break;
+	                }
+	           else{
+	               hs.add(str.charAt(i));
+	           }}
+	        if(count==0){
+	            System.out.println("No recurring character in the given string "+str);
+	        }}}
