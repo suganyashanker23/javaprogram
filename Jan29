@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Happy number or not</p>
+<input type="number" id="num">
+
+<button onclick="happy()">Try it</button><br><br>
+<div id="output"></div>
+<script>
+
+function happy() {
+var n=document.getElementById("num").value;
+var num=n;
+var count=0;
+var status=false;
+     while(count<4){
+     var value=0;
+     while(n>0){
+    value+=Math.pow(n%10,2);
+    n=Math.floor(n/10);
+    }
+   count++;
+    n=value;
+   if(n==1){
+   document.getElementById("output").innerHTML="The number "+num+" is happy number";
+   status=true;
+}}
+    if(!status){
+       document.getElementById("output").innerHTML="The number "+num+" is not happy number";
+       }
+}
+</script>
+</body>
+</html>
