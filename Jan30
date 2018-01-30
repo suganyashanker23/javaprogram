@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+    var num = document.getElementById("input").value;
+    var n=num;
+	var temp=num;
+	var count=0;
+	var sum=0;
+	while(temp>0) {
+		temp=Math.floor(temp/10);
+		count++;
+	}
+	for(var i=count;i>0;i--) {
+		sum+=Math.pow(n%10, i);
+		n=Math.floor(n/10);
+	}
+	if(num==sum) {
+		document.getElementById("output").innerHTML="The number "+num+" is disarium number";
+	}
+	else {
+document.getElementById("output").innerHTML="The number "+num+" is not disarium number";
+	}
+}
+</script>
+</head>
+<body>
+
+Enter the number: <input type="number" id="input" onblur="myFunction()">
+
+<p id="output"></p>
+
+</body>
+</html>
