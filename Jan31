@@ -1,0 +1,22 @@
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        System.out.println("The number is cube or not");
+               HelloWorld hw=new HelloWorld();
+               hw.cube(8);
+               hw.cube(12);
+               hw.cube(125);
+               hw.cube(9);
+     }
+     public void cube(int n){
+        int num=(int)Math.round(Math.pow(n,1.0/3.0));
+         if(n==num*num*num){
+             System.out.println("The number "+n+" is cube");
+         }
+         else{
+             System.out.println("The number "+n+" is not cube");
+         }
+         }
+         
+}
