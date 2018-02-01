@@ -1,0 +1,32 @@
+package logicalprograms;
+import java.util.Scanner;
+public class Jan3 {
+public static void main(String[] args) {
+		System.out.println("Finding best amount for the month");
+		System.out.println("Enter the amount");
+		Scanner s=new Scanner(System.in);
+		int actualamount=s.nextInt();
+        System.out.println("Enter the interest rate");
+        float interestrate=s.nextFloat();
+        System.out.println("Enter the month number");
+        int month=s.nextInt();
+        s.close();
+        //System.out.println(actualamount+interestrate+month);
+        Jan3 j=new Jan3();
+        System.out.println("The least amount to get minium profit is "+j.rightamount(actualamount,interestrate,month));
+	}
+	public int rightamount(int actualamount,float interestrate,int month) {
+		int rightamount=0;
+		float interestvalue=interestrate/100;
+		int charge=(int)(actualamount*0.03);   //beat percentage
+		int finalamount=actualamount-charge;    //beat money
+        int finalamountinterest=(int) (finalamount*interestvalue*month);   //finding total interest for the amount with no of month
+        System.out.println(finalamountinterest);
+        int actualinterestamount=((int) ((finalamount-finalamountinterest)*interestvalue))*month;  //finding less interest value
+        System.out.println("The minmium amount to get maxium profit is :"+actualinterestamount);
+        System.out.println("The amount you will get is                 :"+(actualamount-charge-actualinterestamount));
+        System.out.println("actual interest for the amount             :"+(actualamount-charge-actualinterestamount)*interestvalue*month);
+        System.out.print("profit                                      :");
+        System.out.println(((actualamount-charge-actualinterestamount)*interestvalue*month)-actualinterestamount);
+		return actualinterestamount+(actualamount/50);
+				}}
