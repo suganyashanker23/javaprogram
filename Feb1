@@ -1,0 +1,39 @@
+package logicalprograms;
+import java.util.*;
+public class Feb1 {
+
+	public static void main(String[] args) {
+		System.out.println("EVERY MONTH INTEREST CALCULATOR \n");
+Scanner s=new Scanner(System.in);
+System.out.println("Enter the monthly amount");
+int amount=s.nextInt();
+System.out.println("Enter the interest percentage");
+float interestrate=s.nextFloat();
+System.out.println("Enter the number of month");
+int month=s.nextInt();
+s.close();
+Feb1 f=new Feb1();
+System.out.println("The final amount is "+f.finalamount(amount, interestrate, month));
+}
+	public int finalamount(int amt,float rate, int mon) {
+		int famount=amt;
+		int amount=amt;
+		float interestrate=rate;
+		int month=mon;
+		for(int i=1;i<=month;i++) {
+			if(i==1) {
+				System.out.println("Month "+i);
+				System.out.println("final amount for the month"+amount);
+			}
+			else {
+			int interestamount=0;
+			System.out.println("Month "+i);
+			interestamount=Math.round((famount*interestrate)/100);
+			System.out.println("Interestamount "+interestamount);
+			famount+=amount+interestamount;
+				System.out.println("final amount for the month"+famount);
+							}
+		}
+		return famount;
+	}
+}
