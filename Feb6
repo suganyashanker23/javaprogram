@@ -1,0 +1,40 @@
+package logicalprograms;
+import java.util.*;
+public class Feb6 {
+	  public static void main(String[] args) {
+		  boolean status=true;
+	        System.out.println("Enter the length for the first array");
+	     Scanner s=new Scanner(System.in);
+	 int a1l=s.nextInt();
+	 int a1[]=new int[a1l];
+	 System.out.println("Enter the elements for first array");
+	 for(int i=0;i<a1l;i++){
+	   int a=s.nextInt();
+	   a1[i]=a;
+	 }
+	System.out.println(Arrays.toString(a1));
+	System.out.println("Enter the length for the second array");
+	 int a2l=s.nextInt();
+	 int a2[]=new int[a2l];
+	 System.out.println("Enter the elements for second array");
+	 for(int i=0;i<a2l;i++){
+	   int a=s.nextInt();
+	   a2[i]=a;
+	 }
+	System.out.println(Arrays.toString(a2));
+	if(a1l==a2l) {
+		for(int i=0;i<a1l;i++) {
+			if(a1[i]!=a2[i]) {
+				status= false;
+				break;
+			}}}
+	else {
+		status =false;
+	}
+	if(status) {
+		System.out.println("The two arrays are equal");
+	}
+	else {
+		System.out.println("The two arrays are not equal");
+	}}}
+	
