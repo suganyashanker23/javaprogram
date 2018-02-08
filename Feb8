@@ -1,0 +1,22 @@
+package logicalprograms;
+
+import java.util.Arrays;
+
+public class Feb8 {
+
+	public static void main(String[] args) {
+		System.out.println("Replace every element with the next greatest element in an given array of integers");
+		int a[]= {200, 45, 20, 100, 23, -5, 2, 1, -6, 0,-5,-100};
+		int b[]=new int[a.length];
+for(int i=0;i<a.length-1;i++) {
+	int temp=a[i+1];
+	for(int j=i+1;j<a.length;j++) {
+		if(a[j]>=temp) {
+			 temp=a[j];
+		}}
+	b[i]=temp;
+}
+b[a.length-1]=-1;
+System.out.println(Arrays.toString(b));
+}}
+	
