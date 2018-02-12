@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Enter the number of rows for diamond(half of the diamond)</h1>
+<input id="input" type="number">
+<button onclick="result()">Show</button>
+<br>
+<textarea id="output" rows=15 style="border: none"></textarea>
+<script>
+function result(){
+var n=document.getElementById('input').value;
+		var gn=n;
+		var sn=1;
+		for(var i=0;i<n;i++) {
+			for(var j=0;j<gn;j++) {
+            document.getElementById('output').innerHTML+=" ";
+			}
+			gn--;
+			for(var k=1;k<=sn;k++) {
+            document.getElementById('output').innerHTML+="*";
+			}
+			sn=sn+2;	
+       document.getElementById('output').innerHTML+="\n";	
+       }
+		gn=2;
+		sn=n*2-3;
+		for(var i=0;i<n;i++) {
+			for(var j=0;j<gn;j++) {
+            document.getElementById('output').innerHTML+=" ";
+			}
+			gn++;
+			for(var k=1;k<=sn;k++) {
+            document.getElementById('output').innerHTML+="*";
+			}
+			sn=sn-2;	
+       document.getElementById('output').innerHTML+="\n";
+       }}
+        </script>
+</body>
+</html>
