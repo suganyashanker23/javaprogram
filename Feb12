@@ -1,0 +1,38 @@
+package logicalprograms;
+import java.util.*;
+public class Feb12 {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+
+		System.out.println("Enter the number of rows(half of the diamond)");
+		int n=s.nextInt();
+		int gn=n;
+		int sn=1;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<gn;j++) {
+			System.out.print(" ");
+			}
+			gn--;
+			for(int k=1;k<=sn;k++) {
+				System.out.print("*");
+			}
+			sn=sn+2;	
+			System.out.println("");
+		}
+		gn=2;
+		sn=n*2-3;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<gn;j++) {
+			System.out.print(" ");
+			}
+			gn++;
+			for(int k=1;k<=sn;k++) {
+				System.out.print("*");
+			}
+			sn=sn-2;	
+			System.out.println("");
+		}
+	}
+
+}
