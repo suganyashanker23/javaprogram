@@ -1,0 +1,71 @@
+package logicalprograms;
+import java.util.*;
+class A{
+	int salary=8000;
+	int salary(){
+		//System.out.println("The basic salary of the employee" +salary);
+		return salary;
+	}}
+class B extends A{
+	int hike=2000;
+	int hsalary=salary+2000;
+	int salary(){
+		//System.out.println("The salary of the employee after hike"+(salary+hike));
+		return hsalary;
+	}}
+class C extends B{
+	int bonus=5000;
+	int bsalary=salary+bonus;
+	int salary() {
+	//System.out.println("The salary of the employee with bonus before hike"+(salary+bonus));
+	return bsalary;
+	}}
+
+public class Feb15 extends C{
+public static void main(String args[]) {
+	TreeMap<String,Integer> year16 = new TreeMap<String,Integer>();
+	String[] year= {"01.Jan", "02.Feb", "03.Mar", "04.Apr", "05.May","06.Jun","07.Jul","08.Aug","09.Sep","10.Oct","11.Nov","12.Dec"};
+	A a=new A();            //Creating object for class A
+	B b=new B();            //creating object for class B
+	C c=new C();
+	Feb15 f=new Feb15();    //creating object for class Feb15
+	for(int i=0;i<12;i++) {
+		if(i!=9) {
+		year16.put(year[i],	a.salary());
+		}
+		else {
+			year16.put(year[i], c.salary());
+		}	}
+	//b.salary(); 
+	//c.salary();             //method override
+	//f.salary();
+	//f.sample();
+	System.out.println("The salary for the months in the year 2016");
+	for(String k:year16.keySet()) {
+		System.out.println(k+"    "+year16.get(k));
+	}
+	System.out.println("The salary for the months in the year 2017");
+	TreeMap<String,Integer> year17 = new TreeMap<String,Integer>();
+	for(int i=0;i<12;i++) {
+		if(i<4) {
+		year17.put(year[i],	a.salary());
+		}
+		else if (i==9) {
+			year17.put(year[i],	f.salary());
+		}
+		else {
+			year17.put(year[i], b.salary());
+		}	}
+	for(String k:year17.keySet()) {
+		System.out.println(k+"    "+year17.get(k));
+	}}
+int salary(){
+	int bonus=5000;
+	int hbsalary=salary+bonus+hike;
+	//System.out.println("The salary of the employee after hike with bonus"+(salary+hike+bonus));
+	return hbsalary;
+}
+void sample() {
+	super.salary();   //calling super class method in subclass method using super keyword
+}}
+
