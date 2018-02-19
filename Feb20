@@ -1,0 +1,40 @@
+package logicalprograms;
+//multiple inheritance with interface
+interface A1{
+	int age=35;                   //variable in interface is public static final
+	void parent();                //method in interface in public abstract
+	String uncle();
+	default void father() {
+		System.out.println("default method from interface A called with class object name");   //default method
+	}
+	default void familylead() {
+		System.out.println("default method 2 from interface A called with class object name");
+	}}
+interface B1{
+	int age=30;
+	void parent();
+	String anuty();
+	static void mother() {
+	System.out.println("static method from interface B called with interface name");    // static method
+	}}
+class C1 implements B1,A1{
+	 public void parent(){
+		 System.out.println("parent method of interface which is defined class, decleared in both the interface and called with class object");
+	 }
+	public String uncle() {
+		return "uncle";
+	}
+	public String anuty() {
+		return "anuty";
+	}}
+public class Feb16 extends C1{
+		public static void main(String[] args) {
+		C1 c=new C1();
+c.parent();                                           //interface method is called with class object
+c.father();                                          // default method in interface called with class object name.
+B1.mother();                                         // static method in interface called with interface name.
+c.anuty();
+c.uncle();
+System.out.println(A1.age);                            // age variable defined in both the interface so call with interface name. 
+System.out.println(B1.age);
+}}
