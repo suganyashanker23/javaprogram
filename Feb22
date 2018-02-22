@@ -1,0 +1,33 @@
+package logicalprograms;
+import java.util.*;
+class Bankdetails{
+	private String name;
+	private String accno;
+	private  String phno;
+	private String bname;
+	public void setter(String name,String accno, String phno,String bname) {
+		this.name=name;
+		this.accno=accno;
+		this.phno=phno;
+		this.bname=bname;
+	}
+	public Map<String,String> getter(){
+		HashMap<String,String> hm=new HashMap<String,String>();
+		hm.put("name", name);
+		hm.put("account number", accno);
+		hm.put("Phone number", phno);
+		hm.put("bank name", bname);
+		return hm;
+	}
+
+}
+public class Feb21 {
+
+	public static void main(String[] args) {
+System.out.println("");
+Bankdetails b=new Bankdetails();
+b.setter("Suganya", "1234567890", "9551580319", "ICICI");
+System.out.println(b.getter());
+	}
+
+}
