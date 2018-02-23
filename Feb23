@@ -1,0 +1,42 @@
+package logicalprograms;
+class Account{
+	int accno;
+	String name;
+	int amount;
+	public void setDetails(int acno,String cname, int initialamt) {
+		accno=acno;
+		name=cname;
+		amount=initialamt;
+	}
+	public void getDetails() {
+		System.out.println("Account Number  :  "+accno+"\nName  :  "+name+"\nInitial Amount  :  "+amount);
+	}
+	public void deposite(int amt) {
+		amount+=amt;
+		System.out.println(amt+"  is deposited");
+		System.out.println("New balance in the account  :  "+amount);
+	}
+	public void withdraw(int amt) {
+		if(amount<amt) {
+			System.out.println("Insufficient fund");
+		}
+		else{
+			amount-=amt;
+			System.out.println(amt+"  is withdraw ");
+			System.out.println("New balance in the account  :  "+amount);
+		}
+		
+	}
+}
+public class Feb23 {
+
+	public static void main(String[] args) {
+		Account a=new Account();
+		a.setDetails(987654321, "Suganya", 500);
+		a.getDetails();
+		a.deposite(5000);
+		a.withdraw(2000);
+		a.withdraw(10000);
+	}
+
+}
