@@ -1,0 +1,124 @@
+package logicalprograms;
+import java.util.*;
+public class Mar2 {
+	static Scanner s=new Scanner(System.in);
+	static Map<String,ArrayList<String>> m=new TreeMap<String,ArrayList<String>>();
+	
+	public static void add(String listname, String note) {
+		for(Map.Entry<String, ArrayList<String>> entry : m.entrySet()) {
+			if(entry.getKey().equals(listname)) {
+				entry.getValue().add(note);
+			}
+		}
+	}
+		public static void viewAllList(){
+	for(Map.Entry<String, ArrayList<String>> entry : m.entrySet()) {
+	        System.out.println("...."+entry.getKey()+"....");
+	       int l=entry.getValue().size();
+	       for(int i=0;i<l;i++)
+	       {	            
+	    	   System.out.println((i+1)+". "+entry.getValue().get(i));
+	        }
+	    }
+	}
+	public static void edit(int e,String note){
+		for(Map.Entry<String, ArrayList<String>> entry: m.entrySet()) {
+			entry.getValue().set(e-1,note);
+			
+		}
+	}
+    public static void delete(int e){
+    	for(Map.Entry<String, ArrayList<String>> entry: m.entrySet()) {
+			entry.getValue().remove(e-1);
+			}
+	}
+public static void createNewList(String listname) {
+	  ArrayList<String> a=new ArrayList<String>();
+	 int op;
+	 
+	  do {
+		  System.out.println("1.add \n2.finished");
+		  op=s.nextInt();
+		  switch(op) {
+		  case 1:  System.out.println("Enter the note");String note=s.next();a.add(note);break;
+		  case 2: m.put(listname,a);break;
+		  default:System.out.println("Enter the proper value");
+		  }
+	  }while(op==1);
+		
+}
+public static void deleteList(String listname) {
+	m.remove(listname);
+}
+public static void editList(String listname) {
+	viewList(listname);
+	int noteoption;
+	String note;
+	int number;
+	do
+	{
+	System.out.println("Enter the option to perform operation in list");
+			System.out.println("1.add note \n2.edit note \n3.delete note \n4.edit list name \n5.Exit list");
+ noteoption=s.nextInt();
+ switch(noteoption) {
+ case 1: System.out.println("Enter the note to add it the list");
+  note=s.next();
+  System.out.println(note);add(listname,note);break;
+ case 2: System.out.println("Enter the number of note to change it in the list");
+  number=s.nextInt();System.out.println("Enter the new note "); note=s.next();edit(number,note);break;
+ case 3: System.out.println("Enter the number of note to delete it from the list");
+ number=s.nextInt();delete(number);break;
+ case 4: System.out.println("Enter the new list name");String newlistname=s.next();
+         for(Map.Entry<String, ArrayList<String>> entry: m.entrySet()){
+		 if(entry.getKey().equals(listname)) {
+         m.put(newlistname,entry.getValue());
+         m.remove(listname);
+         listname=newlistname;
+         }}
+	 	 break;
+	 	 case 5: noteoption=5;System.out.println("     *************");break;
+ default:System.out.println("Enter the proper choice");
+ }if(noteoption<4) {
+ viewList(listname);
+ }
+	}while(noteoption!=5);
+
+}
+public static void viewList(String listname) {
+	boolean status=true;
+	for(Map.Entry<String, ArrayList<String>> entry: m.entrySet()) {
+		String ln=entry.getKey();
+			if(ln.equals(listname)) {
+				System.out.println("...."+entry.getKey()+"....");
+			for(int i=0;i<entry.getValue().size();i++) {
+				System.out.println(entry.getValue().get(i));
+				status=false;
+			}
+			}
+			}
+	if(status){
+		System.out.println("No list found with the name "+listname);
+	}
+	}
+
+	public static void main(String args[]){
+		 System.out.println("My To do list\n");
+		 int listoption;
+		 do {
+	    System.out.println("Enter the option to perform operation with list");
+		 System.out.println("1.create new list \n2.Edit existing list \n3.delete list \n4.View list \n5.Exit");
+		listoption=s.nextInt();
+		 if(listoption!=5)
+		 System.out.println("Enter the list name to perform operation");
+		 String listname=s.next();
+		 System.out.println(listname);
+		 switch(listoption) {
+		 case 1: createNewList(listname);break;
+		 case 2: editList(listname);break;
+		 case 3: deleteList(listname);break;
+		 case 4: viewList(listname);break;
+		 case 5: listoption=5;System.out.println("     *****************");break;
+		default:System.out.println("Enter the proper choice");		
+		 }
+		 }while(listoption!=5);
+		}}
