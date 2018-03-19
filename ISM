@@ -1,0 +1,292 @@
+//main class
+
+package javaproject;
+import java.util.*;
+public class InventoryManagementSystem {
+	public static Scanner s=new Scanner(System.in);
+	public static TreeMap<Integer,ArrayList<String>> cm= new TreeMap<Integer, ArrayList<String>>();
+		public static void main(String[] args) {
+		System.out.println("Welcome to Inventory Management System \n");
+		Customer c=new Customer(); 
+		Product p=new Product();
+		Order o=new Order();
+        int input;
+do {
+	System.out.println("1.Product \n2.customer \n3.order \n4.close");
+	input=s.nextInt();
+switch(input) {
+case 1: p.product();break;
+case 2: c.customer();break;
+case 3: o.order();break;
+case 4:break;
+default: System.out.println("Enter the proper input");
+}
+}while(input!=4);
+//p.purchase();
+	}
+
+}
+
+
+//product class
+
+package javaproject;
+import java.util.*;
+
+public class Product {
+	TreeMap<String,ArrayList<Integer>> pm =new TreeMap<String,ArrayList<Integer>>();
+	Scanner s=new Scanner(System.in);
+	 public void product() {
+		int pinput;
+		   do {
+			   System.out.println("1.create new product \n2.remove product \n3.view all product \n4.close product window");
+	 pinput=s.nextInt();
+	switch(pinput) {
+	case 1:createproduct();break;
+	case 2:removeproduct();break;
+	case 3:viewallproduct();break;
+	case 4:pinput=4;break;
+	default:System.out.println("Enter the proper input");
+	}
+		   }while(pinput!=4);
+		   
+	   }
+	   public void createproduct() {
+		   ArrayList<Integer> pl=new ArrayList<Integer>();
+		   System.out.println("Enter the product details");
+		  System.out.println("1.Product name \n2.price \n3.stack");
+		  String productname=s.next();
+		  int price=s.nextInt();
+		  pl.add(price);
+		  int stock=s.nextInt();
+		  pl.add(stock);
+		  pl.add(0);
+		  pm.put(productname, pl);
+		   System.out.println(productname+" is created");
+	   }
+	   
+	   public void removeproduct() {
+		   System.out.println("Enter the product name to remove it from the list");
+		   String product=s.next();
+		   for(String k:pm.keySet()) {
+			   if(k.equals(product)) {
+				   pm.remove(k);
+		   System.out.println(product+" is removed");
+			   }
+		   }
+	   }
+	   public void viewallproduct() {
+		   for(String k: pm.keySet() ) {
+			   System.out.println(k+" "+pm.get(k));
+		   }
+	   }
+	   public int findprice(String pname) {
+		   System.out.println("findprice method called "+pname);
+		   boolean status=false;
+		   int price=0;
+		   for(Map.Entry<String,ArrayList<Integer>> e: pm.entrySet()) {
+			   System.out.println(e.getKey());
+			   if(e.getKey().equals(pname)) {
+				    price=e.getValue().get(0);
+				    System.out.println("price at findmethod"+price);
+				   status= true;
+			   }
+			     }
+		   if(status) {
+			   return price;
+		   }
+		   else {
+			   System.out.println("No price found");
+			   return price;
+		   }
+	   }
+	   public void purchase(String iname, int quantity) {
+		   boolean status=true;
+		  		   for(Map.Entry<String,ArrayList<Integer>> e: pm.entrySet()){
+			       if(e.getKey().equals(iname) && e.getValue().get(1)>quantity) {
+				   e.getValue().set(1,e.getValue().get(1)-quantity);
+				   e.getValue().set(2,e.getValue().get(2)+quantity);
+				   status=false;
+				   viewallproduct();
+				    }
+			   
+		   }
+		   if(status) {
+			   System.out.println("we do not have enough stock");
+		   }
+	   }
+}
+
+
+// customer class
+
+package javaproject;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Scanner;
+public class Customer {
+	Scanner s=new Scanner(System.in);
+	public void customer() {
+		Customer c=new Customer();
+		int cinput;
+		do {
+		System.out.println("1.create customer \n2.update customer \n3.delete customer \n4.find customer \n5.view all customer details \n6.close customer window");
+		cinput=s.nextInt();
+		switch(cinput) {
+		case 1:c.createCustomer();break;
+		case 2:break;
+		case 3:c.deleteCustomer();break;
+		case 4:break;
+		case 5: c.viewAllCustomer();break;
+		default: System.out.println("Enter the proper value");
+		}
+		}while(cinput!=6);
+		}
+	public void createCustomer() {
+		ArrayList<String> a=new ArrayList<String>();
+		System.out.println("Enter the customer details");
+		System.out.println("1.Custoemr id 2.First name 3.Last name 4.Tel 5.Email address");
+		int customerid=s.nextInt();
+				a.add(Integer.toString(customerid));
+		a.add(s.next());	
+		a.add(s.next());	
+		a.add(s.next());	
+		a.add(s.next());
+		InventoryManagementSystem.cm.put(customerid,a);
+	}
+	 public void deleteCustomer() {
+		   System.out.println("Enter the customer id to delete it from the customer list");
+		   int customerid=s.nextInt();
+		   System.out.println(customerid);
+		   for(Map.Entry<Integer,ArrayList<String>> e: InventoryManagementSystem.cm.entrySet()) {
+			   if(e.getKey().equals(customerid)) {
+				   System.out.println(e.getKey()+"is removed");
+				   InventoryManagementSystem.cm.remove(e.getKey());
+			   }
+		   }
+	   }
+	 public void viewAllCustomer() {
+			for(Map.Entry<Integer,ArrayList<String>> e: InventoryManagementSystem.cm.entrySet()) {
+				for(int i=0;i<e.getValue().size();i++) {
+					System.out.println(e.getKey());
+				System.out.println(e.getValue().get(i));
+				}
+			}
+		}
+	 public void findCusotmer(int id) {
+		 for(Map.Entry<Integer, ArrayList<String>> e: InventoryManagementSystem.cm.entrySet()) {
+			 if(e.getKey().equals(id)) {
+				 System.out.println(e.getKey());
+				 for(int i=0;i<e.getValue().size();i++) {
+					 System.out.println(e.getValue().get(i));
+				 }
+			 }
+		 }
+	 }
+	
+	 	 /*  public void editCustomer() {
+	   System.out.println("Enter the Customer id to edit ");
+	   int customerid=s.nextInt();
+	   for(Map.Entry<Integer,ArrayList<String>> e: m.entrySet()) {
+		   if(e.getKey().equals(customerid)) {
+			   
+			  m.remove(e.getKey());
+		   }
+	   }
+ }*/
+}
+
+
+//order class
+
+package javaproject;
+import java.util.*;
+public class Order {
+	Map<Integer,ArrayList> itemlist=new HashMap<Integer,ArrayList>();
+	Map<Integer,Float> billlist=new HashMap<Integer,Float>();
+	Scanner s=new Scanner(System.in);
+	int billno=10000;
+	float netvalue=0;
+	int count=1;
+	int cid;
+public void order() {
+	System.out.println("Order method");
+	int option;
+	do {
+	System.out.println("1.new bill \n2.Add item to existing bill \n3.Find bill  \n4.close the billing window");
+	option=s.nextInt();
+	switch (option) {
+	case 1: newbill(); break;
+	case 2: additem();break;
+	case 3: findbill();break;
+	default:System.out.println("Enter the proper value");
+	}
+	}while(option!=4);
+}
+public void additem() {
+		ArrayList a=new ArrayList();
+	Product p=new Product();
+	a.add(cid);
+	a.add(billno);
+	System.out.println("Enter the item name");
+	String iname=s.next();
+	a.add(iname);
+	int price=	p.findprice(iname);
+	System.out.println(price);
+	a.add(price);
+	System.out.println("Enter the quantity");
+	int quantity=s.nextInt();
+	a.add(quantity);
+	float priceofitem=price*quantity;
+	netvalue+=priceofitem;
+	System.out.println(netvalue);
+	a.add(priceofitem);
+	itemlist.put(count,a);
+	count++;
+	generatebill();
+	p.purchase(iname,quantity);
+}
+public void generatebill() {
+	System.out.println("Bill number: "+billno);
+	System.out.println("customr id"+cid);
+	billlist.put(billno,netvalue);
+	System.out.println("Item name   price     quantity     total");
+	for(Map.Entry<Integer,ArrayList> e: itemlist.entrySet()) {
+		if(e.getValue().get(0).equals(billno)) {
+			System.out.println("itemlist");
+		for(int i=2;i<e.getValue().size();i++) {
+			    System.out.print(e.getValue().get(i));
+			    System.out.print("         ");
+			}
+		System.out.println("");
+		}
+	}
+	System.out.println("Net Value:   "+netvalue);
+}
+public void newbill() {
+	System.out.println("********************  New Bill  ******************");
+	billno++;
+	netvalue=0;
+	System.out.println("Enter the customer id");
+	cid=s.nextInt();
+	additem();
+}
+public void findbill() {
+	System.out.println("Enter the bill no");
+	int bnumber=s.nextInt();
+	System.out.println("Item name   price     quantity     total");
+	for(Map.Entry<Integer,ArrayList> e: itemlist.entrySet()) {
+		if(e.getValue().get(0).equals(bnumber)) {
+			System.out.println("Bill no: "+e.getValue().get(0));
+			System.out.println("Customer id: "+e.getValue().get(1));
+		for(int i=2;i<e.getValue().size();i++) {
+			    System.out.print(e.getValue().get(i));
+			    System.out.print("        ");
+			}
+		System.out.println("");
+		}
+	}
+	System.out.println("Net Value:   "+netvalue);
+}
+}
