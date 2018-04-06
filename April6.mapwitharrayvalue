@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class test {
+
+	public static void main(String[] args) {
+		Map<String,int[]> map=new HashMap<String,int[]>();
+		map.put("test", createarray(3,10));// TODO Auto-generated method stub
+		map.put("sample",createarray(5,30));
+		System.out.println("Getting value Without method with key sample");
+int[] b=map.get("sample");
+System.out.println(b[0]+" "+b[1]);
+System.out.println("Getting value by calling method with key test");
+System.out.println(getvalue(map.get("test"),0));
+System.out.println(getvalue(map.get("test"),1));
+	}
+public static int[] createarray(int a, int b) { // method to convert values to array
+int c[]= {a,b};
+return c;
+}
+public static int getvalue(int a[],int index) { // method to convert array to values.
+	int c=a[index];
+	return c;
+}
+}
