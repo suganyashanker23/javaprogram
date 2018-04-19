@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+public class April18 {
+
+	public static void main(String[] args) {
+		String s = "abcbcdef";
+		int arraylen = 1;
+		ArrayList<String> a = new ArrayList<String>();
+		String str = "";
+		int x = 0;
+		int maxlen = 0;
+		int index = 0;
+		for (int i = 0; i < s.length() - 1; i++) {
+			if (s.charAt(i) <= s.charAt(i + 1)) {
+				if (i == s.length() - 2) {
+					str += s.charAt(i);
+					str += s.charAt(i + 1);
+					a.add(str);
+				} else {
+					str += s.charAt(i);
+				}
+			} else {
+				str += s.charAt(i);
+				a.add(str);
+				x++;
+				str = "";
+			}
+		}
+		for (int i = 0; i < a.size(); i++) {
+			String sample = a.get(i);
+			int len = sample.length();
+			if (len > maxlen) {
+				maxlen = len;
+				index = i;
+			}
+		}
+		System.out.println("The first and longest substring arranged in alphabetical order in the given string is : "
+				+ a.get(index));
+	}
+}
