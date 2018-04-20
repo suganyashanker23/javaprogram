@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static String abbreviation(String a, String b) {
+        String capa=a.toUpperCase();
+                  String newa="";
+        for(int i=0;i<a.length();i++){
+            for(int j=0;j<b.length();j++){
+                if(capa.charAt(i)==b.charAt(j)){
+                    newa+=capa.charAt(i);
+                }
+                    
+            }
+
+        }
+        System.out.println(newa+" "+b);
+            if(newa.equals(b)){
+                return "YES";
+            }
+            else{
+                return "NO";
+            }
+            
+    }
+
+        
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int q = in.nextInt();
+        for(int a0 = 0; a0 < q; a0++){
+            String a = in.next();
+            String b = in.next();
+            String result = abbreviation(a, b);
+            System.out.println(result);
+        }
+        in.close();
+    }
+}
