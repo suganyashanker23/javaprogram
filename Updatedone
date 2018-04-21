@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class April20 {
+
+	static String abbreviation(String a, String b) {
+		String newa = "";
+		if (a.equals(b)) {
+			newa = b;
+		} else {
+			StringBuilder astr = new StringBuilder();
+			astr.append(a);
+			for (int i = 0; i < b.length(); i++) {
+				for (int j = 0; j < astr.length(); j++) {
+					if (astr.charAt(j) == b.charAt(i) || Character.toUpperCase(astr.charAt(j)) == b.charAt(i)) {
+						newa += b.charAt(i);
+						astr.deleteCharAt(j);
+					} else {
+						if (astr.charAt(j) == Character.toUpperCase(astr.charAt(j))) {
+							newa += a.charAt(j);
+
+						}
+					}
+				}
+			}
+
+		}
+		if (newa.equals(b)) {
+			return "YES";
+		} else {
+			return "NO";
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int q = in.nextInt();
+		for (int a0 = 0; a0 < q; a0++) {
+			String a = in.next();
+			String b = in.next();
+			String result = abbreviation(a, b);
+			System.out.println(result);
+		}
+		in.close();
+	}
+}
