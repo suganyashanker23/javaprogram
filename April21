@@ -1,0 +1,26 @@
+public class Simple{
+public static void main(String args[]){
+String sentence="cocodaaabalanacacochcoco";
+		String word="co";
+		String temp="";
+for(int i=0;i<sentence.length();i++) {
+    if(sentence.charAt(i)==word.charAt(0)) {
+	for(int j=i;j<(i+word.length());j++) 
+       {
+	temp+=sentence.charAt(j);
+	}
+        if(temp.equals(word)) {
+	System.out.print("no");
+	i++;
+        }
+        else{
+	System.out.print(sentence.charAt(i));
+        }
+temp="";
+     }		
+    else {
+     System.out.print(sentence.charAt(i));
+     }
+}
+		
+}}
