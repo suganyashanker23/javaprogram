@@ -1,0 +1,97 @@
+
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class April27 {
+	public static void main(String[] args) {
+		System.out.println("PROGRAM 1");
+		int arr[]= {80,96,18,73,78,60,60,15,45,15,10,5,46,87,33,60,14,71,65,2,5,97,0};
+		System.out.println("Grades");
+		display(arr);
+		int newarr[]=gradingStudents(arr);
+		System.out.println("\nUpdated grades");
+		display(newarr);
+		System.out.println("\nPROGRAM 2");
+		int apples[]= {-2,2,1};
+		int oranges[]= {-6,5};
+		countApplesAndOranges(7,11,5,15,apples,oranges);
+		System.out.println("PROGRAM 3");
+		System.out.println(kangaroo(0, 2, 5, 3));
+		System.out.println(kangaroo(0, 3, 4, 2));
+			}
+	  static String kangaroo(int x1, int v1, int x2, int v2) {
+	        boolean status=false;
+	        for(int i=0;i<10000;i++){
+	          x1+=v1;
+	            x2+=v2;
+	            if(x1==x2){
+	                status=true;
+	            break;
+	            }
+	           
+	        }
+	        if(status){
+	            return "YES";
+	        }
+	       else{
+	                return "NO";
+	            }  
+	    }
+	 static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+	        int applecount=0;
+	        int orangecount=0;
+	       for(int i=0;i<apples.length;i++){
+	           int distance=a+apples[i];
+	           if(distance>=s && distance<=t){
+	               applecount++;
+	           }
+	       }
+	        for(int i=0;i<oranges.length;i++){
+	           int distance=b+oranges[i];
+	            if(distance>=s && distance<=t){
+	               orangecount++;
+	           }
+	       }
+	        System.out.println(applecount +"\n"+orangecount);
+	       
+	    }
+
+
+	static void display(int[] arr) {
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+		
+	}
+	 static int[] gradingStudents(int[] grades) {
+	        int updatedgrades[]=new int[grades.length];
+	        for(int i=0;i<grades.length;i++){
+	            if(grades[i]<38){
+	                updatedgrades[i]=grades[i];
+	            }
+	            else {
+	            int temp=grades[i]%10;
+	                if(temp==5||temp==0){
+	                    updatedgrades[i]=grades[i];
+	                }
+	                else if(temp==1||temp==2||temp==6||temp==7){
+	                    updatedgrades[i]=grades[i];
+	                    }
+	                else if(temp==3||temp==8){
+	                    updatedgrades[i]=grades[i]+2;
+	                }
+	                else{
+	                    if(temp==4||temp==9){
+	                        updatedgrades[i]=grades[i]+1;
+	                    }
+	                }
+	            }
+	        }
+	                    return updatedgrades;
+
+	    }
+	        
+}
