@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First JavaScript</h2>
+
+<button type="button"
+onclick="breakingRecords()">
+Click me to display the count of record breaks for maximum and minimum score.</button>
+
+<p id="demo"></p>
+
+<script>
+function breakingRecords() {
+console.log("test");
+var score=[3, 4, 21, 36, 10, 28, 35, 5, 24, 42];
+    var max=score[0];
+    var min=score[0];
+    var  maxcount=0;
+    var mincount=0;
+    for(var i=0;i<score.length;i++){
+        if(score[i]>max){
+           // console.log("max "+score[i]);
+            max=score[i];
+            maxcount++;
+        }
+        else if(score[i]<min){
+                       // console.log("min "+score[i]);
+            min=score[i];
+            mincount++;
+        }
+    }
+  //  var finalcount=[maxcount,mincount];
+  //  console.log(maxcount+" "+mincount+" "+finalcount);
+   // return finalcount;
+document.getElementById("demo").innerHTML=maxcount+" "+mincount;
+}
+</script>
+</body>
+</html> 
